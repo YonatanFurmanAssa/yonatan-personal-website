@@ -13,7 +13,6 @@ export const ContactSection = () => {
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    {/* Left Side: Info */}
                     <div className="space-y-8">
                         <h3 className="text-2xl font-semibold mb-6">Contact Information</h3>
 
@@ -61,7 +60,7 @@ export const ContactSection = () => {
                         className="space-y-4 bg-card p-8 rounded-xl border border-border/50 shadow-sm"
                     >
                         {/* Get your access key at web3forms.com (it's free) */}
-                        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+                        <input type="hidden" name="access_key" value="bea9c177-6c44-45ca-b8b1-dbe0276adede" />
 
                         <div className="grid grid-cols-1 gap-4">
                             <div>

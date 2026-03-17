@@ -54,7 +54,7 @@ export const NavBar = () => {
                     }}
                     className="text-xl font-bold text-primary z-[60]"
                 >
-                    <span className="text-foreground">Yonatan </span> <span className="bg-secondary/40"></span>
+                    <span className="text-foreground">Yonatan </span> <span className="bg-secondary/40">Protfolio</span>
                 </button>
 
                 {/* Desktop Menu */}
