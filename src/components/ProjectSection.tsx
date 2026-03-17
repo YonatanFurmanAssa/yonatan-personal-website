@@ -6,7 +6,7 @@ const projects = [
         id: 1,
         title: "Ansible Playbook for Postgres",
         description: "Automated database provisioning and configuration management. Features idempotency and security hardening for production-ready Postgres instances.",
-        image: "./projects/devops-placeholder.jpeg", 
+        image: "./projects/devops-placeholder.jpeg",
         tags: ["Ansible", "Bash", "Postgres"],
         demoUrl: "https://youtube.com",
         githubUrl: "https://github.com"
@@ -46,7 +46,6 @@ export const ProjectsSection = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {projects.map((project, key) => (
                         <div key={key} className="group bg-card rounded-xl overflow-hidden shadow-sm border border-border/50 transition-all duration-300 hover:shadow-md hover:shadow-primary/5 card-hover">
-                            {/* Image Wrapper */}
                             <div className="h-48 overflow-hidden">
                                 <img
                                     src={project.image}
@@ -56,7 +55,6 @@ export const ProjectsSection = () => {
                             </div>
 
                             <div className="p-6">
-                                {/* Tags */}
                                 <div className="flex flex-wrap gap-2 mb-4">
                                     {project.tags.map((tag, i) => (
                                         <span key={i} className="px-2 py-1 text-[10px] font-bold uppercase tracking-wider rounded-md bg-primary/10 text-primary border border-primary/20">
@@ -73,10 +71,8 @@ export const ProjectsSection = () => {
                                     {project.description}
                                 </p>
 
-                                {/* Footer of the card */}
                                 <div className="flex justify-between items-center pt-4 border-t border-border/50">
                                     <div className="flex items-center gap-4">
-                                        {/* External Links use <a> tags for actual navigation */}
                                         <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                                             <ExternalLink size={20} />
                                         </a>
@@ -85,7 +81,6 @@ export const ProjectsSection = () => {
                                         </a>
                                     </div>
 
-                                    {/* Internal link for project details */}
                                     <Link
                                         to={`/projects/${project.id}`}
                                         className="text-xs font-bold uppercase tracking-widest text-primary hover:opacity-80"

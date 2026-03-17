@@ -53,13 +53,11 @@ export const ContactSection = () => {
                         </div>
                     </div>
 
-                    {/* Right Side: Form */}
                     <form
                         action="https://api.web3forms.com/submit"
                         method="POST"
                         className="space-y-4 bg-card p-8 rounded-xl border border-border/50 shadow-sm"
                     >
-                        {/* Get your access key at web3forms.com (it's free) */}
                         <input type="hidden" name="access_key" value="bea9c177-6c44-45ca-b8b1-dbe0276adede" />
 
                         <div className="grid grid-cols-1 gap-4">

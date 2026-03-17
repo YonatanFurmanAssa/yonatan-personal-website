@@ -21,7 +21,6 @@ export const NavBar = () => {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    // Lock body scroll when menu is open so the background doesn't move
     useEffect(() => {
         if (isMenuOpen) {
             document.body.style.overflow = 'hidden';
@@ -32,7 +31,6 @@ export const NavBar = () => {
 
     const scrollToSection = (id: string) => {
         setIsMenuOpen(false);
-        // Small timeout helps mobile browsers finish closing the menu before jumping
         setTimeout(() => {
             const element = document.getElementById(id);
             if (element) {
@@ -70,7 +68,7 @@ export const NavBar = () => {
                     ))}
                 </div>
 
-                {/* Mobile Toggle - High Z-Index to stay above overlay */}
+                {/* Mobile Toggle */}
                 <button
                     className="md:hidden z-[60] text-foreground p-2"
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -78,14 +76,14 @@ export const NavBar = () => {
                     {isMenuOpen ? "✕" : "☰"}
                 </button>
 
-                {/* Mobile Overlay - Fixed to 100dvh */}
+                {/* Mobile Overlay */}
                 <div className={cn(
                     "fixed inset-0 bg-background z-50 md:hidden flex flex-col items-center justify-center transition-all duration-500 ease-in-out",
                     isMenuOpen
                         ? "opacity-100 pointer-events-auto visible"
                         : "opacity-0 pointer-events-none invisible translate-x-full"
                 )}
-                    style={{ height: '100dvh' }} // Forces it to fill the dynamic mobile screen
+                    style={{ height: '100dvh' }} 
                 >
                     <div className="flex flex-col space-y-8 items-center justify-center w-full">
                         {navItems.map((item) => (
