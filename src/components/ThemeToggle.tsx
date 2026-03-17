@@ -1,41 +1,43 @@
-import { useEffect, useState } from "react"
 import { Moon, Sun } from "lucide-react";
-import { cn } from "../lib/utils";
+import { useEffect, useState } from "react";
 
 export const ThemeToggle = () => {
     const [isDarkMode, setIsDarkMode] = useState(false);
 
     useEffect(() => {
-        const storedTheme = localStorage.getItem("theme")
-        if (storedTheme === "dark") {
-            setIsDarkMode(true)
-            document.documentElement.classList.add("dark")
+        // Check local storage OR system preference
+        const storedTheme = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        
+        if (storedTheme === "dark" || (!storedTheme && prefersDark)) {
+            setIsDarkMode(true);
+            document.documentElement.classList.add("dark");
         }
-        else {
-            localStorage.setItem("theme", "light")
-            setIsDarkMode(false)
-        }
-    }, [])
+    }, []);
 
     const toggleMode = () => {
-        if (isDarkMode) {
-            document.documentElement.classList.remove("dark")
-            localStorage.setItem("theme", "light")
-            setIsDarkMode(false)
+        const newMode = !isDarkMode;
+        setIsDarkMode(newMode);
+        if (newMode) {
+            document.documentElement.classList.add("dark");
+            localStorage.setItem("theme", "dark");
         } else {
-            document.documentElement.classList.add("dark")
-            localStorage.setItem("theme", "dark")
-            setIsDarkMode(true)
+            document.documentElement.classList.remove("dark");
+            localStorage.setItem("theme", "light");
         }
-    }
+    };
 
-
-    return <button
-        onClick={toggleMode} className={cn("fixed max-sm:hidden top-5 right-5 z-50 p-2 rounded-full transition-colors duration-300",
-            "focus:outline-hidden",
-            "cursor-pointer transition-all hover:opacity-80"
-
-
-        )}
-    >{isDarkMode ? < Sun className="h-6 w-6 text-yellow-300" /> : <Moon className="h-6 w-6 text-blue-900" />}</button>
-}
+    return (
+        <button
+            onClick={toggleMode} 
+            className="fixed top-20 right-5 md:top-5 z-[70] p-3 rounded-full bg-secondary/80 backdrop-blur-md border border-primary/20 shadow-lg cursor-pointer transition-all hover:scale-110 active:scale-95"
+            aria-label="Toggle Dark Mode"
+        >
+            {isDarkMode ? (
+                <Sun className="h-5 w-5 text-yellow-400 fill-yellow-400" />
+            ) : (
+                <Moon className="h-5 w-5 text-slate-700 fill-slate-700" />
+            )}
+        </button>
+    );
+};
